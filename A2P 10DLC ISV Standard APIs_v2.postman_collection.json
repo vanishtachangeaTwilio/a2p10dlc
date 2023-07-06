@@ -1,0 +1,2119 @@
+{
+	"info": {
+		"_postman_id": "07004727-59b6-43ce-b39d-c29df5639bdb",
+		"name": "A2P 10DLC ISV Standard APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0 Create Subaccount",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.collectionVariables.set(\"variable_key\", \"variable_value\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{ParentAccount}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "FriendlyName",
+							"value": "test-a2p_06072023",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.twilio.com/2010-04-01/Accounts",
+					"protocol": "https",
+					"host": [
+						"api",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"2010-04-01",
+						"Accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.1 Fetch the Secondary Customer Profile Policy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/Policies/RNdfbf3fae0e1107f8aded0e7cead80bf5",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"Policies",
+						"RNdfbf3fae0e1107f8aded0e7cead80bf5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2 Create Empty Secondary Profile",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "FriendlyName",
+							"value": "SecondaryProfile-3",
+							"type": "text"
+						},
+						{
+							"key": "PolicySid",
+							"value": "RNb0d4771c2c98518d916a3d4cd70a8f8b",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "vanishchang2510@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/CustomerProfiles",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"CustomerProfiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.3 Create Business Info Object",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Attributes",
+							"value": "{    \"business_identity\": \"direct_customer\",\n    \"business_industry\": \"EDUCATION\",\n    \"business_name\": \"vanish business\",\n    \"business_regions_of_operation\": \"USA_AND_CANADA\",\n    \"business_registration_identifier\": \"EIN\",\n    \"business_registration_number\": \"221156789\",\n    \"business_type\": \"Partnership\",\n    \"social_media_profile_urls\": \"@vanish_biz\",\n    \"website_url\": \"www.vanish.com\"}",
+							"type": "text"
+						},
+						{
+							"key": "FriendlyName",
+							"value": "vanish-inc End User",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "customer_profile_business_information",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/EndUsers",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"EndUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.4 Create authorized_representative_1",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Attributes",
+							"value": "{\"job_position\":\"Other\",\"last_name\":\"Chan\",\"phone_number\":\"++4915166154906\",\"first_name\":\"Vanish\",\"email\":\"vanishchang2510@gmail.com\",\"business_title\":\"Owner\"}",
+							"type": "text"
+						},
+						{
+							"key": "FriendlyName",
+							"value": "VANISHTA  Authorised Rep",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "authorized_representative_1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/EndUsers",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"EndUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.5 Create authorized_representative_2 (optional)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Attributes",
+							"value": "{    \"business_title\": \"cfo\",\n    \"email\": \"rep2@vanish.com\",\n    \"first_name\": \"rep2\",\n    \"job_position\": \"CFO\",\n    \"last_name\": \"vanish\",\n    \"phone_number\": \"+14345678900\"}",
+							"type": "text"
+						},
+						{
+							"key": "FriendlyName",
+							"value": "VANISHTA  auth_rep_2",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "authorized_representative_2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/EndUsers",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"EndUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.6 Create supporting document: customer_profile_address",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "CustomerName",
+							"value": "VANISHTA  Authorised Rep",
+							"type": "text"
+						},
+						{
+							"key": "Street",
+							"value": "1234 Market St",
+							"type": "text"
+						},
+						{
+							"key": "City",
+							"value": "San Francisco",
+							"type": "text"
+						},
+						{
+							"key": "Region",
+							"value": "CA",
+							"type": "text"
+						},
+						{
+							"key": "PostalCode",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "IsoCountry",
+							"value": "US",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.twilio.com/2010-04-01/Accounts/{{Username}}/Addresses.json",
+					"protocol": "https",
+					"host": [
+						"api",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"2010-04-01",
+						"Accounts",
+						"{{Username}}",
+						"Addresses.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.6.1 Create customer document (when you have a valid AddressSID)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "FriendlyName",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "customer_profile_address",
+							"type": "text"
+						},
+						{
+							"key": "Attributes",
+							"value": "{\"address_sids\":\"AD58ab2cb8ee08dc66ac8655724c5e0169\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/SupportingDocuments",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"SupportingDocuments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.7 Assign Business Info, Auth Rep, Address, and PBP",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "ObjectSid",
+							"value": "IT9dafcfc9049aac508ce963891a105d73",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/CustomerProfiles/BU2228a67a7d020e35de90071039ec3d20/EntityAssignments",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"CustomerProfiles",
+						"BU2228a67a7d020e35de90071039ec3d20",
+						"EntityAssignments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.8 Evaluate Secondary Profile",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "PolicySid",
+							"value": "RNdfbf3fae0e1107f8aded0e7cead80bf5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/CustomerProfiles/BU2228a67a7d020e35de90071039ec3d20/Evaluations",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"CustomerProfiles",
+						"BU2228a67a7d020e35de90071039ec3d20",
+						"Evaluations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.9 Submit Secondary Profile for Review",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Status",
+							"value": "pending-review",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/CustomerProfiles/BU2228a67a7d020e35de90071039ec3d20",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"CustomerProfiles",
+						"BU2228a67a7d020e35de90071039ec3d20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1 Fetch A2P Profile Policy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "FriendlyName",
+							"value": "A2P for Kyle's Keyboards",
+							"type": "text"
+						},
+						{
+							"key": "PolicySid",
+							"value": "RNb0d4771c2c98518d916a3d4cd70a8f8b",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "krojas@twilio.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/Policies/RNb0d4771c2c98518d916a3d4cd70a8f8b",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"Policies",
+						"RNb0d4771c2c98518d916a3d4cd70a8f8b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2 Create an empty A2P Trust Bundle",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "FriendlyName",
+							"value": "A2P for vanish-inc",
+							"type": "text"
+						},
+						{
+							"key": "PolicySid",
+							"value": "RNb0d4771c2c98518d916a3d4cd70a8f8b",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "vanishchang2510@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/TrustProducts",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"TrustProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.3.1 Create an end user  (public companies)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Attributes",
+							"value": "{    \"company_type\": \"public\",\n    \"stock_exchange\": \"NYSE\",\n    \"stock_ticker\": \"Vanish\"}",
+							"type": "text"
+						},
+						{
+							"key": "FriendlyName",
+							"value": "A2P for Vanish-inc-public",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "us_a2p_messaging_profile_information",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/EndUsers",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"EndUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.3.2 Create an end user  (private companies)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Attributes",
+							"value": "{    \"company_type\": \"private\"}",
+							"type": "text"
+						},
+						{
+							"key": "FriendlyName",
+							"value": "A2P for Vanish-inc-private",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "us_a2p_messaging_profile_information",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/EndUsers",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"EndUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.3.3 Create an end user  (non-profit)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Attributes",
+							"value": "{    \"company_type\": \"non-profit\"}",
+							"type": "text"
+						},
+						{
+							"key": "FriendlyName",
+							"value": "A2P for Vanish-inc-non-profit",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "us_a2p_messaging_profile_information",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/EndUsers",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"EndUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.3.4 Create an end user  (government)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Attributes",
+							"value": "{    \"company_type\": \"government\"}",
+							"type": "text"
+						},
+						{
+							"key": "FriendlyName",
+							"value": "A2P for Vanish-inc-government",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "us_a2p_messaging_profile_information",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/EndUsers",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"EndUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.4 Assign the end user to the A2P Trust Bundle",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "ObjectSid",
+							"value": "IT0a00b51580463a03328bac8687dc0b56",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/TrustProducts/BU8118ab24842c9e2612af87c31055ace7/EntityAssignments",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"TrustProducts",
+						"BU8118ab24842c9e2612af87c31055ace7",
+						"EntityAssignments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.5 Assign secondary cust profile bundle to A2P trust bundle",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "ObjectSid",
+							"value": "BU2228a67a7d020e35de90071039ec3d20",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/TrustProducts/BU8118ab24842c9e2612af87c31055ace7/EntityAssignments",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"TrustProducts",
+						"BU8118ab24842c9e2612af87c31055ace7",
+						"EntityAssignments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.6 Run evaluation on A2P Trust Product",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "PolicySid",
+							"value": "RNb0d4771c2c98518d916a3d4cd70a8f8b",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/TrustProducts/BU8118ab24842c9e2612af87c31055ace7/Evaluations",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"TrustProducts",
+						"BU8118ab24842c9e2612af87c31055ace7",
+						"Evaluations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.7 Submit A2P Trust Bundle for review",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Status",
+							"value": "pending-review",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/TrustProducts/BU8118ab24842c9e2612af87c31055ace7",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"TrustProducts",
+						"BU8118ab24842c9e2612af87c31055ace7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.0 Create an A2P Low-Volume Brand without Secondary Vetting",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "CustomerProfileBundleSid",
+							"value": "BU2228a67a7d020e35de90071039ec3d20",
+							"type": "text"
+						},
+						{
+							"key": "A2PProfileBundleSid",
+							"value": "BU8118ab24842c9e2612af87c31055ace7",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://messaging.twilio.com/v1/a2p/BrandRegistrations",
+					"protocol": "https",
+					"host": [
+						"messaging",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"a2p",
+						"BrandRegistrations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.0.1 Using Fetch to check brand registration status",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://messaging.twilio.com/v1/a2p/BrandRegistrations/BN63c869b03603225e37bdbb8365863b3a",
+					"protocol": "https",
+					"host": [
+						"messaging",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"a2p",
+						"BrandRegistrations",
+						"BN63c869b03603225e37bdbb8365863b3a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.1 Update an A2P Brand",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://messaging.twilio.com/v1/a2p/BrandRegistrations/BN63c869b03603225e37bdbb8365863b3a",
+					"protocol": "https",
+					"host": [
+						"messaging",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"a2p",
+						"BrandRegistrations",
+						"BN63c869b03603225e37bdbb8365863b3a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 Import Campaign verify token to an existing brand (527 Political Organizations)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://messaging.twilio.com/v1/a2p/BrandRegistrations/BN4d1303d5765482da7094a21ce62dfa75",
+					"protocol": "https",
+					"host": [
+						"messaging",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"a2p",
+						"BrandRegistrations",
+						"BN4d1303d5765482da7094a21ce62dfa75"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.3 Fetch all external vetting records (527 Political Organizations)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://messaging.twilio.com/v1/a2p/BrandRegistrations/BN4d1303d5765482da7094a21ce62dfa75/Vettings?PageSize=20",
+					"protocol": "https",
+					"host": [
+						"messaging",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"a2p",
+						"BrandRegistrations",
+						"BN4d1303d5765482da7094a21ce62dfa75",
+						"Vettings"
+					],
+					"query": [
+						{
+							"key": "PageSize",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.4 Fetch a single external vetting record (527 Political Organizations)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://messaging.twilio.com/v1/a2p/BrandRegistrations/BN4d1303d5765482da7094a21ce62dfa75/Vettings/VT12445353",
+					"protocol": "https",
+					"host": [
+						"messaging",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"a2p",
+						"BrandRegistrations",
+						"BN4d1303d5765482da7094a21ce62dfa75",
+						"Vettings",
+						"VT12445353"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.1 Create a new Messaging Service",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "InboundRequestURL",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "FallbackUrl",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "FriendlyName",
+							"value": "test-msg-3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://messaging.twilio.com/v1/Services",
+					"protocol": "https",
+					"host": [
+						"messaging",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"Services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.2 Fetch a Pre-existing Messaging Service",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://messaging.twilio.com/v1/Services/MG1b5889c503614dbcfbce7400bc6483cb",
+					"protocol": "https",
+					"host": [
+						"messaging",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"Services",
+						"MG1b5889c503614dbcfbce7400bc6483cb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.1 Fetch possible A2P campaign use cases",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "InboundRequestURL",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "FallbackUrl",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "FriendlyName",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://messaging.twilio.com/v1/Services/MG1b5889c503614dbcfbce7400bc6483cb/Compliance/Usa2p/Usecases?BrandRegistrationSid=BN4d1303d5765482da7094a21ce62dfa75",
+					"protocol": "https",
+					"host": [
+						"messaging",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"Services",
+						"MG1b5889c503614dbcfbce7400bc6483cb",
+						"Compliance",
+						"Usa2p",
+						"Usecases"
+					],
+					"query": [
+						{
+							"key": "BrandRegistrationSid",
+							"value": "BN4d1303d5765482da7094a21ce62dfa75"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.2 Create A2P Campaign",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "OptInKeywords",
+							"value": "BEGIN",
+							"type": "text"
+						},
+						{
+							"key": "OptInKeywords",
+							"value": "START",
+							"type": "text"
+						},
+						{
+							"key": "OptInMessage",
+							"value": "Thanks for subscribing",
+							"type": "text"
+						},
+						{
+							"key": "Description",
+							"value": "Send marketing messages about sales and offers",
+							"type": "text"
+						},
+						{
+							"key": "MessageFlow",
+							"value": "End users opt-in by visiting www.acme.com, creating a new user account, consenting to receive marketing messages via text, and providing a valid mobile phone number.",
+							"type": "text"
+						},
+						{
+							"key": "BrandRegistrationSid",
+							"value": "BN4d1303d5765482da7094a21ce62dfa75",
+							"type": "text"
+						},
+						{
+							"key": "MessageSamples",
+							"value": "You have an upcoming appointment",
+							"type": "text"
+						},
+						{
+							"key": "MessageSamples",
+							"value": "Your appointment has been cancelled. ",
+							"type": "text"
+						},
+						{
+							"key": "UsAppToPersonUsecase",
+							"value": "MARKETING",
+							"type": "text"
+						},
+						{
+							"key": "HasEmbeddedLinks",
+							"value": "True",
+							"type": "text"
+						},
+						{
+							"key": "HasEmbeddedPhone",
+							"value": "True",
+							"type": "text"
+						},
+						{
+							"key": "OptOutKeywords",
+							"value": "STOP",
+							"type": "text"
+						},
+						{
+							"key": "OptOutMessage",
+							"value": "You have successfully been unsubscribed. You will not receive any more messages from this number. Reply START to resubscribe.",
+							"type": "text"
+						},
+						{
+							"key": "HelpKeywords",
+							"value": "HELP",
+							"type": "text"
+						},
+						{
+							"key": "HelpMessage",
+							"value": "Reply STOP to unsubscribe. Msg&Data Rates May Apply.",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://messaging.twilio.com/v1/Services/MG1b5889c503614dbcfbce7400bc6483cb/Compliance/Usa2p",
+					"protocol": "https",
+					"host": [
+						"messaging",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"Services",
+						"MG1b5889c503614dbcfbce7400bc6483cb",
+						"Compliance",
+						"Usa2p"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.3 Check your Campaign registration status",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "A2PBrandSid",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Description",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "MessageSamples",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "MessageSamples",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "UsAppToPersonUsecase",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "HasEmbeddedLinks",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "HasEmbeddedPhone",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "BrandRegistrationSid",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "MessageFlow",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "OptInKeywords",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "OptInMessage",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "OptOutKeywords",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "OptOutMessage",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "HelpKeywords",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "HelpMessage",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://messaging.twilio.com/v1/Services/MG1b5889c503614dbcfbce7400bc6483cb/Compliance/Usa2p/QEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+					"protocol": "https",
+					"host": [
+						"messaging",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"Services",
+						"MG1b5889c503614dbcfbce7400bc6483cb",
+						"Compliance",
+						"Usa2p",
+						"QEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.4 DELETE an A2P Campaign (Optional)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Description",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "MessageSamples",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "MessageSamples",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "UsAppToPersonUsecase",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "HasEmbeddedLinks",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "HasEmbeddedPhone",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "BrandRegistrationSid",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Compliance/Usa2p/QEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+					"protocol": "https",
+					"host": [
+						"messaging",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"Services",
+						"MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+						"Compliance",
+						"Usa2p",
+						"QEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6.1 Move Number to Subaccount",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "AccountSID",
+							"value": "{{Username}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.twilio.com/2010-04-01/Accounts/{{ParentAccount}}/IncomingPhoneNumbers/PNabb028afd8c16f5e10789d50407164ba",
+					"protocol": "https",
+					"host": [
+						"api",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"2010-04-01",
+						"Accounts",
+						"{{ParentAccount}}",
+						"IncomingPhoneNumbers",
+						"PNabb028afd8c16f5e10789d50407164ba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6.2 Add Phone Number to Messaging Service",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Description",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "PhoneNumberSid",
+							"value": "PNabb028afd8c16f5e10789d50407164ba",
+							"type": "text"
+						},
+						{
+							"key": "MessageSamples",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "UsAppToPersonUsecase",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "HasEmbeddedLinks",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "HasEmbeddedPhone",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "BrandRegistrationSid",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://messaging.twilio.com/v1/Services/MG1b5889c503614dbcfbce7400bc6483cb/PhoneNumbers",
+					"protocol": "https",
+					"host": [
+						"messaging",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"Services",
+						"MG1b5889c503614dbcfbce7400bc6483cb",
+						"PhoneNumbers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "a) Read Multipcle Policies Resources",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://trusthub.twilio.com/v1/Policies",
+					"protocol": "https",
+					"host": [
+						"trusthub",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"Policies"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Username",
+			"value": ""
+		},
+		{
+			"key": "Password",
+			"value": ""
+		},
+		{
+			"key": "ParentAccount",
+			"value": ""
+		},
+		{
+			"key": "variable_key",
+			"value": ""
+		}
+	]
+}
